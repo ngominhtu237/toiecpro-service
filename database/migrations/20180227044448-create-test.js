@@ -21,54 +21,52 @@ module.exports = {
       },
       idPartOne: {
         type: Sequelize.STRING(11),
+        references: {
+          model: 'partones',
+          key: 'id'
+        }
       },
       idPartTwo: {
-        type: Sequelize.INTEGER,
+        type: Sequelize.STRING(11),
         references: {
           model: 'parttwos',
           key: 'id'
-        },
-        allowNull: false
+        }
       },
       idPartThree: {
-        type: Sequelize.INTEGER,
+        type: Sequelize.STRING(11),
         references: {
           model: 'partthrees',
           key: 'id'
-        },
-        allowNull: false
+        }
       },
       idPartFour: {
-        type: Sequelize.INTEGER,
+        type: Sequelize.STRING(11),
         references: {
           model: 'partfours',
           key: 'id'
-        },
-        allowNull: false
+        }
       },
       idPartFive: {
-        type: Sequelize.INTEGER,
+        type: Sequelize.STRING(11),
         references: {
           model: 'partfives',
           key: 'id'
-        },
-        allowNull: false
+        }
       },
       idPartSix: {
-        type: Sequelize.INTEGER,
+        type: Sequelize.STRING(11),
         references: {
           model: 'partsixes',
           key: 'id'
-        },
-        allowNull: false
+        }
       },
       idPartSeven: {
-        type: Sequelize.INTEGER,
+        type: Sequelize.STRING(11),
         references: {
           model: 'partsevens',
           key: 'id'
-        },
-        allowNull: false
+        }
       },
       testtype_id: {
         type: Sequelize.STRING(11),
