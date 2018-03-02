@@ -1,0 +1,16 @@
+{
+  "development": {
+    "saltRounds": 10,
+    "JWT_KEY": "secretjwtkey",
+    "IOS": {
+        "GOOGLE_CLIENT_ID": "",
+        "GOOGLE_CLIENT_SECRET": ""
+    }
+  },
+  "test": {
+
+  },
+  "production": {
+
+  }
+}
