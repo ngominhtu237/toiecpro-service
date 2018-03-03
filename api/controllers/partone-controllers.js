@@ -7,35 +7,28 @@ const config = require(appRoot + '/config/wannacry/conf.json')[env];
 
 exports.create = (req, res, next) => {
 
-    const listKeyPhotos = ['picture_example', 'photo_1', 'photo_2', 'photo_3', 'photo_4', 'photo_5', 'photo_6', 'photo_7', 'photo_8', 'photo_9', 'photo_10'];
-    const _picture_example = req.files.picture_example[0].path;
-    const _full_audio = req.files.audio[0].path;
-
-    // DEVELOPMENT
-    // const _information = req.body.information;
-    // const _direction = req.body.direction;
-    // const _answer_example = req.body.answer_example;
-
-    // TEST
-    const _information = "TestSpecial"
-    const _direction = "Direction";
-    const _answer_example = "Answer Example";
+    const _information = req.body.information;
+    const _direction = req.body.direction;
+    const _picture_example = req.body.picture_example;
+    const _full_audio = req.body.full_audio;
+    const _answer_example = req.body.answer_example;
 
     const _id = shortid.generate();
-    const mQuestionPartOne = [];
-    const arrayPhotoPaths = [];
-
-    for (let i = 1; i <= 10; i++) {
-        arrayPhotoPaths[i] = req.files[listKeyPhotos[i]][0].path
-    }
+    const arrPhoto = req.body.arrPhoto;
+    const arrOptionA = req.body.arrOptionA;
+    const arrOptionB = req.body.arrOptionB;
+    const arrOptionC = req.body.arrOptionC;
+    const arrOptionD = req.body.arrOptionD;
+    const arrAnswer = req.body.arrAnswer;
+    var mQuestionPartOne = [];
     for (let i = 1; i <= 10; i++) {
         let tempQues = {};
-        tempQues.photo = arrayPhotoPaths[i];
-        tempQues.optionA = "Neque porro quisquam est qui dolorem ipsum quia dolor sit amet";
-        tempQues.optionB = "Neque porro quisquam est qui dolorem ipsum quia dolor sit amet";
-        tempQues.optionC = "Neque porro quisquam est qui dolorem ipsum quia dolor sit amet";
-        tempQues.optionD = "Neque porro quisquam est qui dolorem ipsum quia dolor sit amet";
-        tempQues.answer = "B";
+        tempQues.photo = arrPhoto[i];
+        tempQues.optionA = arrOptionA[i];
+        tempQues.optionB = arrOptionB[i];
+        tempQues.optionC = arrOptionC[i];
+        tempQues.optionD = arrOptionD[i];
+        tempQues.answer = arrAnswer[i];
         tempQues.idPartOne = _id;
         mQuestionPartOne.push(tempQues);
     }
@@ -48,7 +41,7 @@ exports.create = (req, res, next) => {
         answer_example: _answer_example,
         full_audio: _full_audio
     }
-
+    console.log("hello2");
     PartOne.create(part)
     .then(content => {
         console.log("create partone successfully! (not include question)");
