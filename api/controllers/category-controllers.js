@@ -7,14 +7,20 @@ const config = require(appRoot + '/config/wannacry/conf.json')[env];
 
 exports.create = (req, res, next) => {
 
-    const _category_name = "Reading";
+    const _category_id = shortid.generate();
+    const _category_name = req.body.category_name;
+
+    const condition = {
+        id: _category_id,
+    }
 
     const objCategory = {
-        type_name: _category_name,
+        id: _category_id,
+        type_name: _category_name
     }
 
     Category.findOne({
-            where: objCategory
+            where: condition
         })
         .then(found1 => {
             if (!found1) {

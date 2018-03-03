@@ -20,11 +20,11 @@ const config = require(appRoot + '/config/wannacry/conf.json')[env];
 const objectAssign = require('object-assign');
 
 exports.create = (req, res, next) => {
-    const _test_name = "Economy Test 1";
-    const _test_description = "Test nay rat hay!";
-    const _isMainTest = false;
-    const _isLocked = false;
-    const _testtype_id = req.body.testtype;
+    const _test_name = req.body.test_name;
+    const _test_description = req.body.test_description;
+    const _isMainTest = req.body.isMainTest;
+    const _isLocked = req.body.isLocked;
+    const _testtype_id = req.body.test_type;
 
     const _id = shortid.generate();
     const objTest = {
