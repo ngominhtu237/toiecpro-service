@@ -67,6 +67,9 @@ module.exports = (sequelize, DataTypes) => {
         key: 'id'
       }
     },
+    isCompleteTest: {
+      type: DataTypes.BOOLEAN
+    },
     testtype_id: {
       type: DataTypes.STRING(11),
       references: {

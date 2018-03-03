@@ -68,6 +68,9 @@ module.exports = {
           key: 'id'
         }
       },
+      isCompleteTest: {
+        type: Sequelize.BOOLEAN
+      },
       testtype_id: {
         type: Sequelize.STRING(11),
         references: {

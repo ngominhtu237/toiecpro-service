@@ -14,6 +14,7 @@ const QuestionPartFour = require('../models').QuestionPartFour;
 const QuestionPartFive = require('../models').QuestionPartFive;
 const QuestionPartSix = require('../models').QuestionPartSix;
 const QuestionPartSeven = require('../models').QuestionPartSeven;
+const Category = require('../models').TestType;
 const appRoot = require('app-root-path');
 const env = process.env.NODE_ENV || 'development';
 const config = require(appRoot + '/config/wannacry/conf.json')[env];
@@ -24,7 +25,7 @@ exports.create = (req, res, next) => {
     const _test_description = req.body.test_description;
     const _isMainTest = req.body.isMainTest;
     const _isLocked = req.body.isLocked;
-    const _testtype_id = req.body.test_type;
+    const _testtype_id = req.body.testtype_id;
 
     const _id = shortid.generate();
     const objTest = {
@@ -50,10 +51,8 @@ exports.create = (req, res, next) => {
 
 }
 
-// Cần thêm một hàm check xem test đã có đầy đủ part hay chưa !
-exports.checkCompleteTest = (req, res, next) => {
+// Cần thêm một hàm check xem test đã có đầy đủ part cần thiết hay chưa mới show ra cho người dùng !
 
-}
 
 exports.updatePartIntoTest = (req, res, next) => {
     // must create test before inplementing this function 
@@ -96,7 +95,7 @@ exports.updatePartIntoTest = (req, res, next) => {
 
 }
 
-exports.getTests = (req, res, next) => {
+exports.getAllTests = (req, res, next) => {
 
     Test.findAll()
         .then(arrTest => {
@@ -110,6 +109,10 @@ exports.getTests = (req, res, next) => {
                 error: err
             });
         })
+}
+
+exports.getCompleteTest = (req, res, next) => {
+    
 }
 
 exports.getDetailsTest = (req, res, next) => {
