@@ -37,30 +37,13 @@ const PartFiveController = require('../controllers').PartFive;
 const PartSixController = require('../controllers').PartSix;
 const PartSevenController = require('../controllers').PartSeven; 
 const listKeyPhotos = ['picture_example', 'photo_1', 'photo_2','photo_3','photo_4','photo_5','photo_6','photo_7','photo_8','photo_9','photo_10'];
-router.post('/test-partone', uploader.fields([
-    
-    { name: 'audio'}
-
-
-]), (req, res) => {
+router.post('/test', (req, res, next) => {
+    console.log(req.body);
     res.status(200).json({
-        message: req.files
+        message: req.body
     })
 });
-router.post('/create-partone', uploader.fields([
-    { name: 'picture_example'},
-    { name: 'audio'},
-    { name: 'photo_1'},
-    { name: 'photo_2'},
-    { name: 'photo_3'},
-    { name: 'photo_4'},
-    { name: 'photo_5'},
-    { name: 'photo_6'},
-    { name: 'photo_7'},
-    { name: 'photo_8'},
-    { name: 'photo_9'},
-    { name: 'photo_10'}
-]), PartOneController.create);
+router.post('/create-partone', PartOneController.create);
 router.post('/create-parttwo', PartTwoController.create);
 router.post('/create-partthree', PartThreeController.create);
 router.post('/create-partfour', PartFourController.create);
