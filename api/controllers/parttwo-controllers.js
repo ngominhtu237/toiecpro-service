@@ -8,18 +8,25 @@ const config = require(appRoot + '/config/wannacry/conf.json')[env];
 
 exports.create = (req, res, next) => {
 
-    const _information = "Lorem ipsum dolor sit amet, consectetur adipiscing elit";
-    const _direction = "Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...";
-    const _full_audio = "http://toeicpro.com/uploads/2014/09/example.mp3";
+    const _information = req.body.information;
+    const _direction = req.body.direction;
+    const _full_audio = req.body.full_audio;
 
     const _id = shortid.generate();
-    const mQuestionPartTwo = [];
-    for(let i=0; i<30; i++) {
+    const arrQuestionName = req.body.arrQuestionName;
+    const arrOptionA = req.body.arrOptionA;
+    const arrOptionB = req.body.arrOptionB;
+    const arrOptionC = req.body.arrOptionC;
+    const arrAnswer = req.body.arrAnswer;
+    var mQuestionPartTwo = [];
+    
+    for(let i=1; i<=30; i++) {
         let tempQues = {};
-        tempQues.optionA = "Neque porro quisquam est qui dolorem ipsum quia dolor sit amet";
-        tempQues.optionB = "Neque porro quisquam est qui dolorem ipsum quia dolor sit amet";
-        tempQues.optionC = "Neque porro quisquam est qui dolorem ipsum quia dolor sit amet";
-        tempQues.answer = "B";
+        tempQues.question_name = arrQuestionName[i];
+        tempQues.optionA = arrOptionA[i];
+        tempQues.optionB = arrOptionB[i];
+        tempQues.optionC = arrOptionC[i];
+        tempQues.answer = arrAnswer[i];
         tempQues.idPartTwo = _id;
         mQuestionPartTwo.push(tempQues);
     }
@@ -30,7 +37,7 @@ exports.create = (req, res, next) => {
         direction: _direction,
         full_audio: _full_audio
     }
-
+    console.log("OKpart2");
     PartTwo.create(part)
     .then(content => {
         console.log("create parttwo successfully! (not include question)");

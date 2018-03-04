@@ -8,6 +8,9 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
+      question_name: {
+        type: Sequelize.TEXT
+      },
       optionA: {
         type: Sequelize.TEXT
       },

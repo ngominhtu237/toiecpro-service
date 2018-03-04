@@ -6,6 +6,9 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
       type: DataTypes.INTEGER,
     },
+    question_name: {
+      type: DataTypes.TEXT
+    },
     optionA: {
       type: DataTypes.TEXT
     },
